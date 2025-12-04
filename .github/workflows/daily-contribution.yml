@@ -31,7 +31,7 @@ jobs:
       - name: Make contributions
         run: python contribute.py
 
-      - name: Commit and push changes
+      - name: Commit and push changes       # <--- THIS IS THE STEP!
         run: |
           git add contributions.txt
           if git diff --staged --quiet; then
