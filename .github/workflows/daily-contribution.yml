@@ -1,10 +1,12 @@
 name: Daily Contributions
 
+permissions:
+  contents: write
+
 on:
   schedule:
-    # Runs at a random time each day (7:30 AM UTC)
     - cron: '30 7 * * *'
-  workflow_dispatch: # Allows manual triggering
+  workflow_dispatch:
 
 jobs:
   contribute:
