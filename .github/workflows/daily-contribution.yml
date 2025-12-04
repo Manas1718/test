@@ -11,26 +11,26 @@ on:
 jobs:
   contribute:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      
+
       - name: Configure Git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-      
+
       - name: Make contributions
         run: python contribute.py
-      
+
       - name: Commit and push changes
         run: |
           git add contributions.txt
@@ -38,5 +38,6 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Daily contribution: $(date +'%Y-%m-%d')"
+            git pull --rebase origin main
             git push
           fi
